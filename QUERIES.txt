@@ -1,0 +1,18 @@
+1.
+SELECT p.PlayerName, e.year FROM Players p, Editions e WHERE TournamentGiven.idTournament = e.tournament AND p.idPlayer = e.winner;
+
+2.
+SELECT * FROM Matches m WHERE TournamentGiven.idTournament = m.tournament AND Lista.SelectedItem(Año) = m.year;
+
+3.
+SELECT m.round, e.year FROM Matches m, Editions e WHERE m.winner = PlayerGiven.idPlayer AND m.tournament = TournamentGiven.idTournament AND e.tournament = 
+TournamentGiven.idTournament AND PlayerGiven.idPlayer = e.winner;
+
+4.
+SELECT m.round, t.TournamentName FROM Matches m,Tournaments t WHERE m.tournament = t.idTournament AND 
+PlayerGiven.idPlayer = m.winner AND Lista.SelectedItem(Año) = m.year;
+
+5.
+SELECT p.PlayerName, p.PlayerPoints, COUNT(e.winner), COUNT(m.round) FROM Players p, Editions e, Matches m WHERE p.idPlayer = e.winner AND p.idPlayer = m.winner 
+AND m.round like 'F' GROUP BY(p.idPlayer) ORDER BY(p.PlayerPoints) DESC;
+
